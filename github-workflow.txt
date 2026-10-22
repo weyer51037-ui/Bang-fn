@@ -1,0 +1,27 @@
+name: Build
+on:
+  push:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Arrange project layout
+        run: |
+          mkdir -p src/main/java/dev/vibe/plus src/main/resources lib
+          mv *.java src/main/java/dev/vibe/plus/
+          mv plugin.yml config.yml src/main/resources/
+          mv VibeEconomy-1.5.0.jar lib/
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+      - run: mvn -B package
+      - uses: actions/upload-artifact@v4
+        with:
+          name: VibeEconomyPlus
+          path: target/VibeEconomyPlus-*.jar

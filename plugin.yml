@@ -1,0 +1,26 @@
+name: VibeEconomyPlus
+version: 1.0.0
+main: dev.vibe.plus.VibeEconomyPlus
+api-version: '1.21'
+depend: [VibeEconomy]
+description: Add-on for VibeEconomy - m/b/s amounts, shop quantity menu, custom/key selling, dimensional RTP, server toggles.
+commands:
+  open:
+    description: Open crates from anywhere (when staff enable it).
+    usage: /open crates [crate]
+  set:
+    description: Staff settings for everyone.
+    usage: /set opencrates [on|off]
+    permission: vibeeconomy.mod
+  vtoggle:
+    description: Toggle mob spawning and other server features.
+    aliases: [toggles, vt]
+    usage: /vtoggle [key] [on|off]
+    permission: vibeeconomy.admin
+  media:
+    description: How to get the MEDIA rank.
+    usage: /media
+permissions:
+  vibeeconomy.mod:
+    description: Staff commands (/set) and bypass for /open crates.
+    default: op

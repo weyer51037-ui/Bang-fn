@@ -1,0 +1,78 @@
+# VibeEconomyPlus config
+
+amounts:
+  # Typed amounts like 1.5m, 2b, 500k are turned into plain numbers before the command runs.
+  # Values are strings so very large numbers work. Change/add letters freely.
+  # NOTE: 's' is set to sextillion (1e21). Change it if you mean something else.
+  suffixes:
+    k: "1000"
+    m: "1000000"
+    b: "1000000000"
+    t: "1000000000000"
+    s: "1000000000000000000000"
+  commands: [pay, bounty, eco, duel, ah, auction, auctionhouse, orders, order]
+
+shop:
+  quantity-menu: true           # right-click a stackable shop item to pick a quantity
+
+sell:
+  override-command: true        # take over /sell, /sell hand, /sell all (adds custom items + keys)
+  keys:                         # sell value per key (by key id from crates.yml)
+    vanta: 15000
+    void: 60000
+    legend: 250000
+  custom-items:
+    enabled: true               # named / lored / enchanted items are sellable
+    multiplier: 1.0             # x the base material price
+    per-enchant-level: 150      # extra money per total enchant level
+    damage-penalty: 0.5         # a fully broken tool sells for (1 - this) of full price
+  blocked-name-contains: ["Godset", "God ", "Vanta Drill"]   # never sellable
+
+rtp:
+  enabled: true
+  menu: true                    # /rtp opens a dimension menu; false = overworld unless /rtp <dim>
+  cooldown-seconds: 30
+  max-attempts: 25
+  dimensions:
+    overworld:
+      enabled: true
+      display: "&aOverworld"
+      icon: GRASS_BLOCK
+      environment: NORMAL
+      world: ""                 # empty = first world of that environment
+      min-radius: 500
+      max-radius: 5000
+    nether:
+      enabled: true
+      display: "&cNether"
+      icon: NETHERRACK
+      environment: NETHER
+      world: ""
+      min-radius: 200
+      max-radius: 2500
+      min-y: 32
+      max-y: 120
+    end:
+      enabled: true
+      display: "&5The End"
+      icon: END_STONE
+      environment: THE_END
+      world: ""
+      min-radius: 1000          # outer islands start ~1000 blocks out
+      max-radius: 3000
+
+# Staff switches (/set opencrates on|off). off = only mods can use /open crates.
+set:
+  opencrates: false
+
+media:
+  title: "&c&lMEDIA &7Rank"
+  intro: "&7Meet &fany one &7of these to apply:"
+  rules:
+    - "&f500+ &7followers"
+    - "&f1,000+ &7views on a video"
+    - "&f5+ &7average stream viewers"
+  apply: "&7Apply: message staff with a link to your channel."
+
+# Filled in by /vtoggle. true = vanilla behaviour stays ON, false = blocked.
+toggles: {}
